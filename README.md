@@ -11,5 +11,7 @@ Usage:
         --notes="notes_of_this_build" \
         --notify="true_or_false" \
         --tags="tags_of_this_build" \
-        --autoremove="true_or_false"
+        --autoremove="true_or_false" \
+        --deployer="deployer"
+
 

@@ -12,6 +12,7 @@ notify=""
 tags=""
 package=""
 autoremove=""
+deployer=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --apikey=*)
@@ -40,6 +41,9 @@ while [ $# -gt 0 ]; do
       ;;
     --autoremove=*)
       autoremove="${1#*=}"
+      ;;
+    --deployer=*)
+      deployer="${1#*=}"
       ;;
     *)
       printf " [ERROR] Invalid argument '$1 '\n"
@@ -81,7 +85,7 @@ echo "package.....: $package"
 [ "$notify" ]      && echo "notify......: $notify"
 [ "$tags" ]        && echo "tags........: $tags"
 [ "$autoremove" ]  && echo "tags........: $autoremove"
-
+[ "$deployer" ]    && echo "tags........: $deployer"
 
 # Upload
 http_code=`curl -s -o /dev/null -w "%{http_code}" "https://dashboard.applivery.com/api/builds" \
@@ -92,7 +96,8 @@ http_code=`curl -s -o /dev/null -w "%{http_code}" "https://dashboard.applivery.c
     -F os="${os}" \
     -F tags="${tags}" \
     -F package=@"${package}" \
-    -F autoremove="${autoremove}"`
+    -F autoremove="${autoremove}" \
+    -F deployer="${deployer}"`
 
 if [ $http_code -eq 200 ]
 then
