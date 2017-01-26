@@ -72,10 +72,10 @@ echo "apikey......: **********"
 echo "app.........: $app"
 echo "os..........: $os"
 echo "package.....: $package"
-[ $versionName ] && echo "versionName.: $versionName"
-[ $notes ]       && echo "notes.......: $notes"
-[ $notify ]      && echo "notify......: $notify"
-[ $tags ]        && echo "tags........: $tags"
+[ "$versionName" ] && echo "versionName.: $versionName"
+[ "$notes" ]       && echo "notes.......: $notes"
+[ "$notify" ]      && echo "notify......: $notify"
+[ "$tags" ]        && echo "tags........: $tags"
 
 
 # Upload
