@@ -84,18 +84,20 @@ echo "package.....: $package"
 [ "$notes" ]       && echo "notes.......: $notes"
 [ "$notify" ]      && echo "notify......: $notify"
 [ "$tags" ]        && echo "tags........: $tags"
-[ "$autoremove" ]  && echo "tags........: $autoremove"
-[ "$deployer" ]    && echo "tags........: $deployer"
+[ "$autoremove" ]  && echo "autoremove..: $autoremove"
+[ "$deployer" ]    && echo "deploye.....: $deployer"
 
 # Upload
 http_code=`curl -s -o /dev/null -w "%{http_code}" "https://dashboard.applivery.com/api/builds" \
     -H "Authorization:${apikey}" \
     -F app="${app}" \
+    -F os="${os}" \
+    -F package=@"${package}" \
     -F versionName="${versionName}" \
     -F notes="${notes}" \
-    -F os="${os}" \
+    -F notify="${notify}" \
+    -F versionName="${versionName}" \
     -F tags="${tags}" \
-    -F package=@"${package}" \
     -F autoremove="${autoremove}" \
     -F deployer="${deployer}"`
 
