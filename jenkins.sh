@@ -93,7 +93,6 @@ http_code=`curl -s -o /dev/null -w "%{http_code}" "https://dashboard.applivery.c
     -F app="${app}" \
     -F os="${os}" \
     -F package=@"${package}" \
-    -F versionName="${versionName}" \
     -F notes="${notes}" \
     -F notify="${notify}" \
     -F versionName="${versionName}" \
